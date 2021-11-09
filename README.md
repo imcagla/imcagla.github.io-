@@ -1,4 +1,4 @@
 # Tic-Tac-Toe Game 
 
-[Click here to play! 🎮](<a href="https://imcagla.github.io/" target="_blank"></a>)
+<a href="https://imcagla.github.io/" target="_blank">Click here to play! 🎮</a>
 
