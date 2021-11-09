@@ -40,7 +40,6 @@ function winCond() {
 
     for(let i=0; i<condArr.length; i++) {
         if(condArr[i] === "XXX") {
-            //alert("YOU WIN!");
             document.getElementById("alertbox").innerHTML = `
             <span class="box-alert" >
                 PLAYER 'X' WON!! <span class="btn-close" onclick="window.location.reload()">X</span>
