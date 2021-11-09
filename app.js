@@ -1,14 +1,28 @@
-var toggleVar = false;
+var toggleVar = true;
+
+function playerSelect() {
+    console.log(this.event.target.id);
+    this.event.target.id === "false" ? toggleVar = false : toggleVar = true;
+
+    setTimeout(function() {
+        document.getElementById("playerselect").classList = "hide-box";
+        document.getElementById("desc").innerHTML = `Player '${!toggleVar ? "X": "O"}' starts!`
+       }, 250);
+    
+
+}
 
 function putClick(boxLocation) {
+    
     const boxSection = document.getElementById(`rowcol${boxLocation}`);
+    
     toggleVar = !toggleVar;
 
     toggleVar ? boxSection.innerHTML = "<span>X</span>" : boxSection.innerHTML = "<span>O</span>";
 
     setTimeout(function() {
        winCond();
-      }, 1200);
+      }, 200);
 }
 
 function winCond() {
@@ -29,16 +43,18 @@ function winCond() {
             //alert("YOU WIN!");
             document.getElementById("alertbox").innerHTML = `
             <span class="box-alert" >
-                FIRST PLAYER WON!! <span class="btn-close" onclick="window.location.reload()">X</span>
+                PLAYER 'X' WON!! <span class="btn-close" onclick="window.location.reload()">X</span>
             </span>
             `
         } else if (condArr[i] === "OOO") {
             document.getElementById("alertbox").innerHTML = `
             <span class="box-alert" >
-                SECOND PLAYER WON!! <span class="btn-close" onclick="window.location.reload()">X</span>
+                PLAYER 'O' WON!! <span class="btn-close" onclick="window.location.reload()">X</span>
             </span>
             `
         }
     }
 }
+
+
 

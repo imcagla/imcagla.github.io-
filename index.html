@@ -5,16 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <title>TicTacToe</title>
 </head>
 <body>
+    <!--Select Player-->
+    <div id="playerselect">
+        <div class="box-player" >
+            FIRST PLAYER (X) <span class="btn-close-pl" ><i id="false" onclick="playerSelect()" class="fas fa-check"></i></span>
+        </div>
+        <div class="box-player" >
+            SECOND PLAYER (O) <span class="btn-close-pl" ><i id="true" onclick="playerSelect()"
+                 class="fas fa-check"></i></span>
+        </div>
+    </div>
+
+    <!--Alert Box-->
     <div id="alertbox">
 
     </div>
+
+    <!--Title-->
     <header>
         TicTacToe Game
     </header>
-    <p class="desc">First player starts with "X"!</p>
+    <p id="desc" class="desc"></p>
+
+    <!--Game Area-->
     <div class="box-position">
         <section class="box-style">
             <div class="columns">
@@ -52,6 +69,8 @@
             </div>
         </section>
     </div>
+
+    <!--Footer-->
     <footer>Created by ImCagla</footer>
     
     <script src="app.js"></script>
