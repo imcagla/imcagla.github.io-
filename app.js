@@ -25,14 +25,18 @@ function winCond() {
     
 
     for(let i=0; i<condArr.length; i++) {
-        if(condArr[i] === "XXX" || condArr[i] === "OOO") {
+        if(condArr[i] === "XXX") {
             //alert("YOU WIN!");
             document.getElementById("alertbox").innerHTML = `
             <span class="box-alert" >
-                YOU WIN!! <span class="btn-close" onclick="window.location.reload()">X</span>
+                FIRST PLAYER WON!! <span class="btn-close" onclick="window.location.reload()">X</span>
             </span>
-            
-            
+            `
+        } else if (condArr[i] === "OOO") {
+            document.getElementById("alertbox").innerHTML = `
+            <span class="box-alert" >
+                SECOND PLAYER WON!! <span class="btn-close" onclick="window.location.reload()">X</span>
+            </span>
             `
         }
     }
