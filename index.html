@@ -9,13 +9,18 @@
     <title>TicTacToe</title>
 </head>
 <body>
-    <!--Select Player-->
-    <div id="playerselect">
+    <!--Start game button-->
+    <div id="start-game" onclick="startGame()">
+        START
+    </div>
+    
+    <!--Player Scores-->
+    <div id="playerselect" style="visibility: hidden;">
         <div class="box-player" >
-            FIRST PLAYER (X) <span class="btn-close-pl" ><i id="false" onclick="playerSelect()" class="fas fa-check"></i></span>
+            FIRST PLAYER (X) <span class="btn-close-pl" ><i id="false" onclick="" class="fas fa-check"></i></span>
         </div>
         <div class="box-player" >
-            SECOND PLAYER (O) <span class="btn-close-pl" ><i id="true" onclick="playerSelect()"
+            SECOND PLAYER (O) <span class="btn-close-pl" ><i id="true" onclick=""
                  class="fas fa-check"></i></span>
         </div>
     </div>
@@ -32,38 +37,38 @@
     <p id="desc" class="desc"></p>
 
     <!--Game Area-->
-    <div class="box-position">
+    <div id="game-box" class="box-position">
         <section class="box-style">
             <div class="columns">
-                <div class="section-style" id="rowcol1" onclick="putClick(1)">
+                <div class="section-style square" id="rowcol1">
                 
                 </div>
-                <div class="section-style" id="rowcol2" onclick="putClick(2)">
+                <div class="section-style square" id="rowcol2">
                     
                 </div>
-                <div class="section-style" id="rowcol3" onclick="putClick(3)">
-                    
-                </div>
-            </div>
-            <div class="columns">
-                <div class="section-style" id="rowcol4" onclick="putClick(4)">
-                    
-                </div>
-                <div class="section-style" id="rowcol5" onclick="putClick(5)">
-                    
-                </div>
-                <div class="section-style" id="rowcol6" onclick="putClick(6)">
+                <div class="section-style square" id="rowcol3">
                     
                 </div>
             </div>
             <div class="columns">
-                <div class="section-style" id="rowcol7" onclick="putClick(7)">
+                <div class="section-style square" id="rowcol4">
                     
                 </div>
-                <div class="section-style" id="rowcol8" onclick="putClick(8)">
+                <div class="section-style square" id="rowcol5">
                     
                 </div>
-                <div class="section-style" id="rowcol9" onclick="putClick(9)">
+                <div class="section-style square" id="rowcol6">
+                    
+                </div>
+            </div>
+            <div class="columns">
+                <div class="section-style square" id="rowcol7">
+                    
+                </div>
+                <div class="section-style square" id="rowcol8">
+                    
+                </div>
+                <div class="section-style square" id="rowcol9">
                     
                 </div>
             </div>

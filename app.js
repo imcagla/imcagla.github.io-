@@ -1,25 +1,40 @@
-var toggleVar = true;
+var toggleVar;
+let boxAreas = document.getElementsByClassName("square");
 
-function playerSelect() {
-    console.log(this.event.target.id);
-    this.event.target.id === "false" ? toggleVar = false : toggleVar = true;
+function startGame() {
+    this.event.target.id ? toggleVar = false : toggleVar = true;
 
     setTimeout(function() {
-        document.getElementById("playerselect").classList = "hide-box";
-        document.getElementById("desc").innerHTML = `Player '${!toggleVar ? "X": "O"}' starts!`
-       }, 250);
-    
+        document.getElementById("start-game").classList = "hide-box";
+        document.getElementById("playerselect").style.visibility = null;
+        for (item in boxAreas) {
+            boxAreas[item].setAttribute("onclick",`putClick(${parseInt(item)+1});`);
+            boxAreas[item].style.cursor = "pointer";
+        }
+
+      }, 250);
 
 }
 
-function putClick(boxLocation) {
+// function playerSelect() {
+//     console.log(this.event.target.id);
+//     this.event.target.id === "false" ? toggleVar = false : toggleVar = true;
+
+//     setTimeout(function() {
+//         document.getElementById("playerselect").classList = "hide-box";
+//         document.getElementById("desc").innerHTML = `Player '${!toggleVar ? "X": "O"}' starts!`
+//        }, 250);
     
+
+// }
+
+function putClick(boxLocation) {
     const boxSection = document.getElementById(`rowcol${boxLocation}`);
     
     toggleVar = !toggleVar;
 
     toggleVar ? boxSection.innerHTML = "<span>X</span>" : boxSection.innerHTML = "<span>O</span>";
-
+    
     setTimeout(function() {
        winCond();
       }, 200);
