@@ -7,11 +7,12 @@ function startGame() {
     setTimeout(function() {
         document.getElementById("start-game").classList = "hide-box";
         document.getElementById("playerselect").style.visibility = null;
+        document.getElementById("desc").innerHTML = `${!toggleVar ? "First Player": "Second Player"}'s turn!`
         for (item in boxAreas) {
             boxAreas[item].setAttribute("onclick",`putClick(${parseInt(item)+1});`);
             boxAreas[item].style.cursor = "pointer";
         }
-
+        
       }, 250);
 
 }
@@ -32,6 +33,7 @@ function putClick(boxLocation) {
     const boxSection = document.getElementById(`rowcol${boxLocation}`);
     
     toggleVar = !toggleVar;
+    document.getElementById("desc").innerHTML = `${!toggleVar ? "First Player": "Second Player"}'s turn!`
 
     toggleVar ? boxSection.innerHTML = "<span>X</span>" : boxSection.innerHTML = "<span>O</span>";
     
@@ -59,7 +61,7 @@ function winCond() {
         if(condArr[i] === "XXX") {
             document.getElementById("alertbox").innerHTML = `
             <span class="box-alert" >
-                PLAYER 'X' WON!! <span class="btn-close" onclick="clearTable()">X</span>
+                FIRST PLAYER 'X' WON!! <span class="btn-close" onclick="clearTable()">X</span>
             </span>
             `
             document.getElementById("scoreX").innerText = scoreXint + 1;
@@ -67,7 +69,7 @@ function winCond() {
         } else if (condArr[i] === "OOO") {
             document.getElementById("alertbox").innerHTML = `
             <span class="box-alert" >
-                PLAYER 'O' WON!! <span class="btn-close" onclick="clearTable()">X</span>
+                SECOND PLAYER 'O' WON!! <span class="btn-close" onclick="clearTable()">X</span>
             </span>
             `
             document.getElementById("scoreO").innerText = scoreOint + 1;
