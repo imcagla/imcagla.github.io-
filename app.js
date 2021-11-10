@@ -52,22 +52,34 @@ function winCond() {
 
     let condArr = [condVar1, condVar2, condVar3, condVar4, condVar5, condVar6, condVar7, condVar8];
     
+    let scoreXint = parseInt(document.getElementById("scoreX").innerText);
+    let scoreOint = parseInt(document.getElementById("scoreO").innerText);
 
     for(let i=0; i<condArr.length; i++) {
         if(condArr[i] === "XXX") {
             document.getElementById("alertbox").innerHTML = `
             <span class="box-alert" >
-                PLAYER 'X' WON!! <span class="btn-close" onclick="window.location.reload()">X</span>
+                PLAYER 'X' WON!! <span class="btn-close" onclick="clearTable()">X</span>
             </span>
             `
+            document.getElementById("scoreX").innerText = scoreXint + 1;
+
         } else if (condArr[i] === "OOO") {
             document.getElementById("alertbox").innerHTML = `
             <span class="box-alert" >
-                PLAYER 'O' WON!! <span class="btn-close" onclick="window.location.reload()">X</span>
+                PLAYER 'O' WON!! <span class="btn-close" onclick="clearTable()">X</span>
             </span>
             `
+            document.getElementById("scoreO").innerText = scoreOint + 1;
         }
     }
+}
+
+function clearTable() {
+    for (item in boxAreas) {
+        boxAreas[item].innerHTML = "";
+    }
+    document.getElementById("alertbox").innerHTML = "";
 }
 
 

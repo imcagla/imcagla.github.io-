@@ -80,24 +80,22 @@ footer {
 .box-player {
     position: relative;
     background-color: rgb(243, 144, 144);
-    min-width: 200px;
+    min-width: 220px;
     border-radius: 10px;
     border: 2px solid ghostwhite;
     color: rgba(16, 43, 16, 0.829);
     padding: 15px;
-    font-size: 1rem;
+    font-size: 1.3rem;
     margin: 5px;
 }
 
-.btn-close-pl {
-    position: relative;
+.player-score {
     cursor: pointer;
     float: right;
-    font-size: 1.1rem;
-    font-weight: bolder;
+    font-size: 1.3rem;
 }
 
-.btn-close-pl:hover {
+.player-score:hover {
     color:rgb(199, 0, 0);
 }
 
