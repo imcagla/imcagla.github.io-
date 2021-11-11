@@ -1,5 +1,6 @@
 var toggleVar;
 let boxAreas = document.getElementsByClassName("square");
+let storedValues = [];
 
 function startGame() {
     this.event.target.id ? toggleVar = false : toggleVar = true;
@@ -29,14 +30,18 @@ function startGame() {
 
 // }
 
+
 function putClick(boxLocation) {
     const boxSection = document.getElementById(`rowcol${boxLocation}`);
-    
-    toggleVar = !toggleVar;
-    document.getElementById("desc").innerHTML = `${!toggleVar ? "First Player": "Second Player"}'s turn!`
 
-    toggleVar ? boxSection.innerHTML = "<span>X</span>" : boxSection.innerHTML = "<span>O</span>";
+    toggleVar = !toggleVar
+    document.getElementById("desc").innerHTML = `${!toggleVar ? "First Player": "Second Player"}'s turn!`
     
+    toggleVar ? boxSection.innerHTML = "<span>X</span>" : boxSection.innerHTML = "<span>O</span>";
+    localStorage.setItem(`rowcol${boxLocation}`, boxSection.innerHTML)
+    storedValues = {... localStorage}
+    boxSection.removeAttribute("onclick");
+
     setTimeout(function() {
        winCond();
       }, 200);
@@ -53,7 +58,6 @@ function winCond() {
     const condVar8 = document.getElementById(`rowcol3`).innerText + document.getElementById(`rowcol5`).innerText + document.getElementById(`rowcol7`).innerText;
 
     let condArr = [condVar1, condVar2, condVar3, condVar4, condVar5, condVar6, condVar7, condVar8];
-    
     let scoreXint = parseInt(document.getElementById("scoreX").innerText);
     let scoreOint = parseInt(document.getElementById("scoreO").innerText);
 
@@ -65,6 +69,12 @@ function winCond() {
             </span>
             `
             document.getElementById("scoreX").innerText = scoreXint + 1;
+            for (item in boxAreas) {
+                boxAreas[item].setAttribute("onclick",`putClick(${parseInt(item)+1});`);
+                boxAreas[item].style.cursor = "pointer";
+                toggleVar = false;
+            }
+            
 
         } else if (condArr[i] === "OOO") {
             document.getElementById("alertbox").innerHTML = `
@@ -73,6 +83,25 @@ function winCond() {
             </span>
             `
             document.getElementById("scoreO").innerText = scoreOint + 1;
+            for (item in boxAreas) {
+                boxAreas[item].setAttribute("onclick",`putClick(${parseInt(item)+1});`);
+                boxAreas[item].style.cursor = "pointer";
+                toggleVar = false;
+            }
+            
+            
+        } else if (Object.keys(storedValues).length === 9) {
+            document.getElementById("alertbox").innerHTML = `
+            <span class="box-alert" >
+                SCORELESS.. Play Again! <span class="btn-close" onclick="clearTable()">X</span>
+            </span>
+            `
+            for (item in boxAreas) {
+                boxAreas[item].setAttribute("onclick",`putClick(${parseInt(item)+1});`);
+                boxAreas[item].style.cursor = "pointer";
+                toggleVar = false;
+            }
+            
         }
     }
 }
@@ -82,6 +111,7 @@ function clearTable() {
         boxAreas[item].innerHTML = "";
     }
     document.getElementById("alertbox").innerHTML = "";
+    window.localStorage.clear();
 }
 
 
