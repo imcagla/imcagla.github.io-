@@ -3,7 +3,7 @@ let boxAreas = document.getElementsByClassName("square");
 let storedValues = [];
 
 function startGame() {
-    this.event.target.id ? toggleVar = false : toggleVar = true;
+    this.event.target.id && (toggleVar = false);
 
     setTimeout(function() {
         document.getElementById("start-game").classList = "hide-box";
@@ -87,21 +87,19 @@ function winCond() {
                 boxAreas[item].setAttribute("onclick",`putClick(${parseInt(item)+1});`);
                 boxAreas[item].style.cursor = "pointer";
                 toggleVar = false;
-            }
-            
-            
-        } else if (Object.keys(storedValues).length === 9) {
-            document.getElementById("alertbox").innerHTML = `
-            <span class="box-alert" >
-                SCORELESS.. Play Again! <span class="btn-close" onclick="clearTable()">X</span>
-            </span>
-            `
-            for (item in boxAreas) {
-                boxAreas[item].setAttribute("onclick",`putClick(${parseInt(item)+1});`);
-                boxAreas[item].style.cursor = "pointer";
-                toggleVar = false;
-            }
-            
+            } 
+        } 
+    }
+    if (Object.keys(storedValues).length === 9) {
+        document.getElementById("alertbox").innerHTML = `
+        <span class="box-alert" >
+            SCORELESS.. Play Again! <span class="btn-close" onclick="clearTable()">X</span>
+        </span>
+        `
+        for (item in boxAreas) {
+            boxAreas[item].setAttribute("onclick",`putClick(${parseInt(item)+1});`);
+            boxAreas[item].style.cursor = "pointer";
+            toggleVar = false;
         }
     }
 }
