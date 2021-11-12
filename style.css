@@ -131,16 +131,16 @@ footer {
 
 #start-game {
     position: absolute;
-    top: 50%;
+    top: 75%;
     left: 50%;
     transform: translate(-50%,-50%);
     z-index: 9999;
     background-color: #67ffab;
     min-width: 100px;
     border-radius: 10px;
+    height: 70px;
     border: 4px solid rgb(1, 56, 51);
     color: #013833;
-    padding: 15px;
     font-size: 2rem;
     font-weight: bolder;
     cursor: pointer;
@@ -149,5 +149,34 @@ footer {
 #start-game:hover {
     color:#011d1a;
     border: 4px solid #011d1a;
-    font-size: 2.5rem;
+    font-size: 2.1rem;
+}
+
+#player-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 999;
+    background-color: #c7f3db;
+    height: 190px;
+    border-radius: 10px;
+    border: 2px solid rgb(1, 56, 51);
+    color: #013833;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: bolder;
+}
+
+input {
+    height: 30px;
+    width: auto;
+    border-radius: 5px;
+    border: 1px solid whitesmoke;
+}
+
+.player-name {
+    font-size: 1.3rem;
+    color: black;
+
 }

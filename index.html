@@ -10,18 +10,21 @@
 </head>
 <body>
     <!--Start game button-->
-    <div id="start-game" onclick="startGame()">
-        START
-    </div>
+    <form id="player-form" action="">
+        <p>Enter your name!</p>
+        <input id="firstname" value="First Player" type="text" placeholder="Enter first player's name">
+        <input id="secondname" value="Second Player" type="text" placeholder="Enter second player's name">
+        <input id="start-game" onclick="startGame()" type="submit" value="PLAY!">
+    </form>
     
     <!--Player Scores-->
     <div id="playerselect" style="visibility: hidden;">
         <div class="box-player" >
-            First Player - <i class="fas fa-times"></i> 
+            <text id="firstplayer" class="player-name" >First Player</text> - <i class="fas fa-times"></i> 
             <div class="player-score" id="scoreX" > 0 </div>
         </div>
         <div class="box-player" >
-            Second Player - <strong>O</strong> 
+            <text id="secondplayer" class="player-name" ></text> - <strong>O</strong> 
             <div class="player-score" id="scoreO" > 0 </div>
         </div>
     </div>

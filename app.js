@@ -1,41 +1,51 @@
 var toggleVar;
 let boxAreas = document.getElementsByClassName("square");
 let storedValues = [];
+let firstPlayer = document.getElementById("firstplayer");
+let secondPlayer = document.getElementById("secondplayer");
+let playerForm = document.getElementById("player-form");
+
+playerForm.addEventListener('submit', function(e) {
+    let firstPlayerName = document.getElementById("firstname").value;
+    let secondPlayerName = document.getElementById("secondname").value;
+    firstPlayer.innerText = firstPlayerName;
+    secondPlayer.innerText = secondPlayerName;
+
+    e.preventDefault();
+})
+
+function setClickFunc() {
+    for (item in boxAreas) {
+        boxAreas[item].setAttribute("onclick",`putClick(${parseInt(item)+1});`);
+        boxAreas[item].style.cursor = "pointer";
+    }
+}
+
+function removeClickFunc() {
+    for (item in boxAreas) {
+        boxAreas[item].removeAttribute("onclick",`putClick(${parseInt(item)+1});`);
+        boxAreas[item].style.cursor = null;
+    }
+}
 
 function startGame() {
     this.event.target.id && (toggleVar = false);
 
     setTimeout(function() {
         document.getElementById("start-game").classList = "hide-box";
+        document.getElementById("player-form").classList = "hide-box";
         document.getElementById("playerselect").style.visibility = null;
-        document.getElementById("desc").innerHTML = `${!toggleVar ? "First Player": "Second Player"}'s turn!`
-        for (item in boxAreas) {
-            boxAreas[item].setAttribute("onclick",`putClick(${parseInt(item)+1});`);
-            boxAreas[item].style.cursor = "pointer";
-        }
+        document.getElementById("desc").innerHTML = `${!toggleVar ? firstPlayer.innerText: secondPlayer.innerText}'s turn!`
+        setClickFunc();
         
       }, 250);
-
 }
-
-// function playerSelect() {
-//     console.log(this.event.target.id);
-//     this.event.target.id === "false" ? toggleVar = false : toggleVar = true;
-
-//     setTimeout(function() {
-//         document.getElementById("playerselect").classList = "hide-box";
-//         document.getElementById("desc").innerHTML = `Player '${!toggleVar ? "X": "O"}' starts!`
-//        }, 250);
-    
-
-// }
-
 
 function putClick(boxLocation) {
     const boxSection = document.getElementById(`rowcol${boxLocation}`);
 
     toggleVar = !toggleVar
-    document.getElementById("desc").innerHTML = `${!toggleVar ? "First Player": "Second Player"}'s turn!`
+    document.getElementById("desc").innerHTML = `${!toggleVar ? firstPlayer.innerText: secondPlayer.innerText}'s turn!`
     
     toggleVar ? boxSection.innerHTML = "<span>X</span>" : boxSection.innerHTML = "<span>O</span>";
     localStorage.setItem(`rowcol${boxLocation}`, boxSection.innerHTML)
@@ -65,29 +75,21 @@ function winCond() {
         if(condArr[i] === "XXX") {
             document.getElementById("alertbox").innerHTML = `
             <span class="box-alert" >
-                FIRST PLAYER 'X' WON!! <span class="btn-close" onclick="clearTable()">X</span>
+                ${firstPlayer.innerText} 'X' WON!! <span class="btn-close" onclick="clearTable()">X</span>
             </span>
             `
             document.getElementById("scoreX").innerText = scoreXint + 1;
-            for (item in boxAreas) {
-                boxAreas[item].setAttribute("onclick",`putClick(${parseInt(item)+1});`);
-                boxAreas[item].style.cursor = "pointer";
-                toggleVar = false;
-            }
+            removeClickFunc();
             
 
         } else if (condArr[i] === "OOO") {
             document.getElementById("alertbox").innerHTML = `
             <span class="box-alert" >
-                SECOND PLAYER 'O' WON!! <span class="btn-close" onclick="clearTable()">X</span>
+                ${secondPlayer.innerText} 'O' WON!! <span class="btn-close" onclick="clearTable()">X</span>
             </span>
             `
             document.getElementById("scoreO").innerText = scoreOint + 1;
-            for (item in boxAreas) {
-                boxAreas[item].setAttribute("onclick",`putClick(${parseInt(item)+1});`);
-                boxAreas[item].style.cursor = "pointer";
-                toggleVar = false;
-            } 
+            removeClickFunc();
         } 
     }
     if (Object.keys(storedValues).length === 9) {
@@ -96,11 +98,7 @@ function winCond() {
             SCORELESS.. Play Again! <span class="btn-close" onclick="clearTable()">X</span>
         </span>
         `
-        for (item in boxAreas) {
-            boxAreas[item].setAttribute("onclick",`putClick(${parseInt(item)+1});`);
-            boxAreas[item].style.cursor = "pointer";
-            toggleVar = false;
-        }
+        removeClickFunc();
     }
 }
 
@@ -109,8 +107,23 @@ function clearTable() {
         boxAreas[item].innerHTML = "";
     }
     document.getElementById("alertbox").innerHTML = "";
+    toggleVar = false;
+    document.getElementById("desc").innerHTML = `${!toggleVar ? firstPlayer.innerText: secondPlayer.innerText}'s turn!`
     window.localStorage.clear();
+    setClickFunc();
+    
 }
 
 
 
+// function playerSelect() {
+//     console.log(this.event.target.id);
+//     this.event.target.id === "false" ? toggleVar = false : toggleVar = true;
+
+//     setTimeout(function() {
+//         document.getElementById("playerselect").classList = "hide-box";
+//         document.getElementById("desc").innerHTML = `Player '${!toggleVar ? "X": "O"}' starts!`
+//        }, 250);
+    
+
+// }
