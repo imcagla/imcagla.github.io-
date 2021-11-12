@@ -5,8 +5,6 @@
 ### Last updates:
   * Play again button for the tied game
   * Players cannot click on the already clicked sections
-
-### Possible updates:
   * Input for players name
    
 ![tictactoe](https://github.com/imcagla/imcagla.github.io-tic-tac-toe/blob/master/tictactoe.PNG?raw=true "Title")
