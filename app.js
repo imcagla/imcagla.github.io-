@@ -75,7 +75,7 @@ function winCond() {
         if(condArr[i] === "XXX") {
             document.getElementById("alertbox").innerHTML = `
             <span class="box-alert" >
-                ${firstPlayer.innerText} 'X' WON!! <span class="btn-close" onclick="clearTable()">X</span>
+                ${firstPlayer.innerText} WON! <span class="btn-close" onclick="clearTable()">X</span>
             </span>
             `
             document.getElementById("scoreX").innerText = scoreXint + 1;
@@ -85,7 +85,7 @@ function winCond() {
         } else if (condArr[i] === "OOO") {
             document.getElementById("alertbox").innerHTML = `
             <span class="box-alert" >
-                ${secondPlayer.innerText} 'O' WON!! <span class="btn-close" onclick="clearTable()">X</span>
+                ${secondPlayer.innerText} WON! <span class="btn-close" onclick="clearTable()">X</span>
             </span>
             `
             document.getElementById("scoreO").innerText = scoreOint + 1;

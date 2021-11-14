@@ -1,8 +1,9 @@
 body {
     background-image: linear-gradient(60deg,rgba(248, 250, 154, 0.514),rgba(168, 235, 255, 0.658)) !important;
     color: rgb(43, 42, 42);
-    font-family: cursive;
+    font-family: 'Inconsolata', monospace;
 }
+
 
 header {
     position: absolute;
@@ -24,6 +25,7 @@ header {
 .box-style {
     background-color: white;
     display: flex;
+    font-family: cursive;
     /* margin: 180px 500px auto;
     height: 240px;
     width: 240px; */
@@ -168,11 +170,29 @@ footer {
     font-weight: bolder;
 }
 
-input {
+#secondname, #firstname {
     height: 30px;
     width: auto;
     border-radius: 5px;
     border: 1px solid whitesmoke;
+}
+
+@media (max-width: 761px) {
+    #secondname, #firstname{
+        max-width: 20vw;
+    }
+}
+
+@media (max-width: 430px) {
+    #secondname, #firstname{
+        display: flex;
+        position: relative;
+        left: 4vw;
+        margin-bottom: 5px;
+    }
+    #player-form {
+        height: 230px;
+    }
 }
 
 .player-name {
